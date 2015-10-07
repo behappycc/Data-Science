@@ -31,18 +31,17 @@ def parseData():
             listIrisData.append(data)
 
 def plotData( data0, data1 ):
-    dataA, =plt.plot( data0[0], data1[0], 'ro' )
-    dataB, =plt.plot( data0[1], data1[1], 'gx' )
-    dataC, =plt.plot( data0[2], data1[2], 'b^' )
-    plt.title( data0[3]+' VS '+data1[3] )
-    plt.xlabel(data0[3])
-    plt.ylabel(data1[3])
+    dataA, =plt.plot( data0[0][0], data1[0][0], 'ro' )
+    dataB, =plt.plot( data0[0][1], data1[0][1], 'gx' )
+    dataC, =plt.plot( data0[0][2], data1[0][2], 'b^' )
+    plt.title( data0[0][3]+' VS '+data1[0][3] )
+    plt.xlabel(data0[0][3])
+    plt.ylabel(data1[0][3])
     plt.legend( [ dataA, dataB, dataC ], [ 'setosa', 'versicolor', 'virginica' ] )
     plt.show()
 
 def sortData():
     for data in listIrisData:
-        #print data.sepalLength
         if data.irisClass == 'Iris-setosa':
             setDatasl.append(data.sepalLength)
             setDatasw.append(data.sepalWidth)
@@ -58,20 +57,33 @@ def sortData():
             virDatasw.append(data.sepalWidth)
             virDatapl.append(data.petalLength)
             virDatapw.append(data.petalWidth)
-#(x, y) = (sepal length, sepal width), (sepal length, petal length), (sepal length, petal width), (sepal width, petal length), (sepal width, petal width), (petal length, petal width)
 
 def test(datax, datay):
     x = []
     y = []
-    if datax == 'sepal length' and datay == 'sepal width':
-        x.append(setDatasl)
-        x.append(verDatasl)
-        x.append(virDatasl)
-        x.append('datax')
-        y.append(setDatasw)
-        y.append(verDatasw)
-        y.append(virDatasw)
-        y.append('datay')
+    if datax == 'sepal_length' and datay == 'sepal_width':
+        x.append([setDatasl, verDatasl, virDatasl, datax])
+        y.append([setDatasw,verDatasw, virDatasw, datay])
+        plotData(x, y)
+    elif datax == 'sepal_length' and datay == 'petal_length':
+        x.append([setDatasl, verDatasl, virDatasl, datax])
+        y.append([setDatapl,verDatapl, virDatapl, datay])
+        plotData(x, y)
+    elif datax == 'sepal_length' and datay == 'petal_width':
+        x.append([setDatasl, verDatasl, virDatasl, datax])
+        y.append([setDatapw,verDatapw, virDatapw, datay])
+        plotData(x, y)
+    elif datax == 'sepal_width' and datay == 'petal_length':
+        x.append([setDatasw, verDatasw, virDatasw, datax])
+        y.append([setDatapl,verDatapl, virDatapl, datay])
+        plotData(x, y)
+    elif datax == 'sepal_width' and datay == 'petal_width':
+        x.append([setDatasw, verDatasw, virDatasw, datax])
+        y.append([setDatapw,verDatapw, virDatapw, datay])
+        plotData(x, y)
+    elif datax == 'petal_length' and datay == 'petal_width':
+        x.append([setDatapl, verDatapl, virDatapl, datax])
+        y.append([setDatapw,verDatapw, virDatapw, datay])
         plotData(x, y)
 
 class IrisData:
@@ -87,10 +99,12 @@ class IrisData:
 def main():
     parseData()
     sortData()
-    test('sepal length', 'sepal width')
-    #a = [1,2,3,'abc']
-    #b = [2,2,2, 'cba']
-    #plotData(a,b)
+    test('sepal_length', 'sepal_width')
+    test('sepal_length', 'petal_length')
+    test('sepal_length', 'petal_width')
+    test('sepal_width', 'petal_length')
+    test('sepal_width', 'petal_width')
+    test('petal_length', 'petal_width')
 
 if __name__ == '__main__':
     main()
