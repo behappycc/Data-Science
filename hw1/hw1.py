@@ -10,18 +10,9 @@ Attribute Information:
 '''
 
 listIrisData = []
-setDatasl=[]
-setDatasw=[]
-setDatapl=[]
-setDatapw = []
-verDatasl=[]
-verDatasw=[]
-verDatapl=[]
-verDatapw = []
-virDatasl=[]
-virDatasw=[]
-virDatapl=[]
-virDatapw = []
+setDatasl, setDatasw, setDatapl, setDatapw = [], [], [], []
+verDatasl, verDatasw, verDatapl, verDatapw = [], [], [], []
+virDatasl, virDatasw, virDatapl, virDatapw = [], [], [], []
 
 def parseData():
     with open(pathToData, 'r') as datafile:
@@ -38,7 +29,6 @@ def plotData( data0, data1 ):
     plt.xlabel(data0[0][3])
     plt.ylabel(data1[0][3])
     plt.legend( [ dataA, dataB, dataC ], [ 'setosa', 'versicolor', 'virginica' ] )
-    plt.show()
 
 def sortData():
     for data in listIrisData:
@@ -99,12 +89,19 @@ class IrisData:
 def main():
     parseData()
     sortData()
+    plt.figure(1)
     test('sepal_length', 'sepal_width')
+    plt.figure(2)
     test('sepal_length', 'petal_length')
+    plt.figure(3)
     test('sepal_length', 'petal_width')
+    plt.figure(4)
     test('sepal_width', 'petal_length')
+    plt.figure(5)
     test('sepal_width', 'petal_width')
+    plt.figure(6)
     test('petal_length', 'petal_width')
+    plt.show()
 
 if __name__ == '__main__':
     main()
