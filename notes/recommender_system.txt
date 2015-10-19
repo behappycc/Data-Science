@@ -1,0 +1,7 @@
+recommender system
+1. http://www.ithome.com.tw/node/76134
+2. http://wiki.mbalib.com/zh-tw/%E4%B8%AA%E6%80%A7%E5%8C%96%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F
+3. https://www.microsoftvirtualacademy.com/zh-tw/training-courses/machine-learning--11247?l=RRgjiKKBB_6504984382
+4. https://github.com/Flowerowl/Big-Data-Resources
+5. http://www.ithome.com.tw/node/76242
+6. https://wefollownews.appspot.com/cittopnews201408_75/12175.html
