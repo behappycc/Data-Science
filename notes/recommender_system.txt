@@ -5,3 +5,9 @@ recommender system
 4. https://github.com/Flowerowl/Big-Data-Resources
 5. http://www.ithome.com.tw/node/76242
 6. https://wefollownews.appspot.com/cittopnews201408_75/12175.html
+
+python n-gram
+1. http://hambao.pixnet.net/blog/post/18823664-python%E7%AD%86%E8%A8%98%EF%BC%9A%E7%94%A2%E7%94%9Fn-gram%E4%BB%A5%E5%8F%8A%E7%B0%A1%E5%96%AE%E9%A0%BB%E7%8E%87%E7%B5%B1%E8%A8%88
+
+spam
+1. https://wefollownews.appspot.com/cittopnews201408_6/10106.html
