@@ -36,13 +36,11 @@ def pca():
     ax.set_title('3 first principal components')
     for c, i, target_name in zip("rgb", [0, 1, 2], target_names):
         ax.scatter(X_r[Y == i, 0], X_r[Y == i, 1], X_r[Y == i, 2], c=c, label=target_name)
-    #handles, labels = ax.get_legend_handles_labels()
-    #ax.legend([ 'setosa', 'versicolor', 'virginica' ],[ 'setosa', 'versicolor', 'virginica' ])
     ax.set_xlabel("1st eigenvector")
     ax.set_ylabel("2nd eigenvector")
     ax.set_zlabel("3rd eigenvector")
 
-    plt.show()
+    #plt.show()
 
 def decisionTree():
     iris = load_iris()
@@ -50,7 +48,7 @@ def decisionTree():
     clf = clf.fit(iris.data, iris.target)
 
     dot_data = StringIO() 
-    tree.export_graphviz(clf, out_file=dot_data, feature_names=iris.feature_names, class_names=iris.target_names) 
+    tree.export_graphviz(clf, out_file=dot_data, feature_names=iris.feature_names) 
     graph = pydot.graph_from_dot_data(dot_data.getvalue()) 
     graph.write_pdf("iris.pdf")
 
@@ -69,7 +67,7 @@ def kmeansClustering():
                   'k_means_iris_8': KMeans(n_clusters=8)
                  }
 
-    fignum = 1
+    fignum = 3
     for name, est in estimators.items():
         fig = plt.figure(fignum, figsize=(4, 3))
         plt.clf()
@@ -85,13 +83,14 @@ def kmeansClustering():
         ax.set_zlabel('Petal length')
         fignum = fignum + 1
 
-    plt.show()
+    #plt.show()
 
 
 def main():
-    #pca()
-    #decisionTree()
+    pca()
+    decisionTree()
     kmeansClustering()
+    plt.show()
 
 if __name__ == '__main__':
     main()
