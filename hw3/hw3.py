@@ -44,11 +44,30 @@ def pca():
 
 def decisionTree():
     iris = load_iris()
-    clf = tree.DecisionTreeClassifier(criterion='gini', splitter='best', min_samples_split=2, min_samples_leaf=1)
+    clf = tree.DecisionTreeClassifier(
+        criterion='gini', 
+        splitter='best', 
+        max_depth=None,
+        min_samples_split=2, 
+        min_samples_leaf=1,
+        min_weight_fraction_leaf=0.0, 
+        max_features=None, 
+        random_state=None, 
+        max_leaf_nodes=None, 
+        class_weight=None
+    )
     clf = clf.fit(iris.data, iris.target)
 
     dot_data = StringIO() 
-    tree.export_graphviz(clf, out_file=dot_data, feature_names=iris.feature_names) 
+    tree.export_graphviz(
+        clf, 
+        out_file=dot_data, 
+        feature_names=iris.feature_names,
+        class_names=iris.target_names,
+        filled=False,
+        rounded=True,
+        special_characters=True
+    )
     graph = pydot.graph_from_dot_data(dot_data.getvalue()) 
     graph.write_pdf("iris.pdf")
 
@@ -84,7 +103,6 @@ def kmeansClustering():
         fignum = fignum + 1
 
     #plt.show()
-
 
 def main():
     pca()
