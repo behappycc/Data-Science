@@ -1,8 +1,9 @@
-#encoding=utf-8
-import jieba
-import extradict
+# -*- coding: utf-8 -*-
 
-jieba.load_userdict("gossipingdict.txt")
+import jieba
+import extraDict
+
+jieba.load_userdict("gossipingDict.txt")
 
 sentence = "台中你是一個三寶三寶飯！"
 print "Input：", sentence

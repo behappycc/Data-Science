@@ -42,8 +42,10 @@ data = json.loads('{'+m.group(0)+'}')
 print data
 '''
 
+'''
 #591
 res = requests.get("http://rent.591.com.tw/index.php?module=search&action=rslist&is_new_list=1&type=1&searchtype=1&region=1&keywords=%E5%A4%A7%E5%AE%89%E5%8D%80&orderType=desc&firstRow=0&totalRows=1836")
 data = json.loads(res.text)
 print data.keys()
 print data['main']
+'''
