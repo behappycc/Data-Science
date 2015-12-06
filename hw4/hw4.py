@@ -24,7 +24,7 @@ def ErdosRenyi():
     m = int(Cnr(5000, 2) * 0.01)
     G=gnm_random_graph(n,m)
     print 'random_graph value: ' + str(nx.average_clustering(G))
-    #nx.draw(G)
+    nx.draw(G)
 
 def Cnr(n, r):
     f = math.factorial
@@ -35,8 +35,8 @@ def main():
     readFile('CA-GrQc.txt')
     readFile('p2p-Gnutella04.txt')
     readFile('Wiki-Vote.txt')
-    readFile('WikiTalk.txt')
-    #plt.show()
+    readFile('p2p-Gnutella08.txt')
+    plt.show()
 
 if __name__ == '__main__':
     main()
