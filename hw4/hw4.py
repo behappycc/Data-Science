@@ -17,25 +17,24 @@ def readFile(filename):
         toNodeId = int(temp[1])
         G.add_edge(fromNodeId, toNodeId)
     print filename +' value: ' + str(nx.average_clustering(G))
+    nx.draw(G)
 
 def ErdosRenyi():
-    n=5000
-    #G(n, m), G(n,p) m = c(n, 2) * p, c(5000, 2) * 0.01 = 124975
-    m = int(Cnr(5000, 2) * 0.01)
-    G=gnm_random_graph(n,m)
+    G = nx.erdos_renyi_graph(5000, 0.01)
     print 'random_graph value: ' + str(nx.average_clustering(G))
     nx.draw(G)
 
-def Cnr(n, r):
-    f = math.factorial
-    return f(n) / f(r) / f(n - r)
-    
 def main():
+    plt.figure('random_graph')
     ErdosRenyi()
+    plt.figure('CA-GrQc')
     readFile('CA-GrQc.txt')
+    plt.figure('p2p-Gnutella04')
     readFile('p2p-Gnutella04.txt')
+    plt.figure('Wiki-Vote')
     readFile('Wiki-Vote.txt')
-    readFile('p2p-Gnutella08.txt')
+    #plt.figure('p2p-Gnutella08')
+    #readFile('p2p-Gnutella08.txt')
     plt.show()
 
 if __name__ == '__main__':
