@@ -44,8 +44,28 @@ corpus = [dictionary.doc2bow(text) for text in nWordAll]
 
 tfidf = models.TfidfModel(corpus)
 corpus_tfidf = tfidf[corpus]
-lda = models.ldamodel.LdaModel(corpus=corpus_tfidf, id2word=dictionary, num_topics=2)
+lda = models.ldamodel.LdaModel(corpus=corpus_tfidf, id2word=dictionary, num_topics=3)
 
 for i in range(0, 3):
     for j in lda.print_topics(i)[0]:
         print j
+
+corpus_lda = lda[corpus_tfidf]
+for doc in corpus_lda:
+    print doc
+
+query = u"台灣 大學"
+x = query.split( )
+query_bow = dictionary.doc2bow(x)
+print query_bow
+
+query_lda = lda[query_bow]
+print query_lda
+
+a = list(sorted(lda[query_bow], key = lambda x : x[1]))
+print a[0]
+print a[-1]
+#least related
+print lda.print_topic(a[0][0])
+#most related
+print lda.print_topic(a[-1][0])
