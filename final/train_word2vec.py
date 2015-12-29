@@ -3,7 +3,6 @@
 from gensim.models import Word2Vec
 import jieba
 
-
 def get_stopWords(stopWords_fn):
     with open(stopWords_fn, 'rb') as f:
         stopWords_set = {line.strip('\r\t').decode('utf-8') for line in f}
@@ -21,7 +20,6 @@ def sentence2words(sentence, stopWords=False, stopWords_set=None):
     else:
         words = [word for word in seg_words]
     return words
-
 
 class MySentences(object):
     def __init__(self, list_csv):
@@ -59,7 +57,7 @@ def train_save(list_csv, model_fn):
 
 
 if __name__ == "__main__":
-    model = train_save('sougou_list.csv', 'word2vec_model_0925')
+    model = train_save('textlist.csv', 'word2vec_model_0925')
 
     # get the word vector
     for w in model.most_similar(u'互联网'):

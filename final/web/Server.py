@@ -19,7 +19,7 @@ from  tornado.escape import json_encode
 import pymongo
 from pymongo import MongoClient
 
-#localhost:8888/index
+#localhost:8000/index
 DB_IP = "localhost"
 DB_PORT = 27017
 

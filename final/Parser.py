@@ -21,12 +21,13 @@ sentence2 = "馬總統蔡英文"
 sentence3 = "台灣大學電機系"
 sentence4 = "獨立音樂需要大家一起來推廣，歡迎加入我們的行列！"
 sentence5 = "我沒有心我沒有真實的自我我只有消瘦的臉孔所謂軟弱所謂的順從一向是我的座右銘"
+sentence6 = "台灣大學獨立音樂"
 listSentence.append(sentence1)
 listSentence.append(sentence2)
 listSentence.append(sentence3)
 listSentence.append(sentence4)
 listSentence.append(sentence5)
-
+listSentence.append(sentence6)
 
 nWordAll = []
 for sentence in listSentence:
@@ -69,3 +70,32 @@ print a[-1]
 print lda.print_topic(a[0][0])
 #most related
 print lda.print_topic(a[-1][0])
+
+sentences = [['first', 'sentence'], ['second', 'sentence']]
+model = models.Word2Vec(sentences, min_count=1)
+
+abc = [[u'台灣', u'大學', u'電機'], [u'獨立', u'音樂', u'需要', u'大家']]
+model = models.Word2Vec(abc, min_count=1)
+model.save('word2vec_model.model')
+
+#print model[u'台灣']
+sim = model.most_similar(positive=[u'台灣', u'大學'])
+for s in sim:  
+    print "word:%s,similar:%s " %(s[0],s[1])
+
+for w in model.most_similar(u'台灣'):
+    print w[0], w[1], 'hi'
+
+
+'''
+class MySentences(object):
+    def __init__(self, dirname):
+        self.dirname = dirname
+
+    def __iter__(self):
+        for fname in os.listdir(self.dirname):
+            for line in open(os.path.join(self.dirname, fname)):
+                yield line.split()
+sentences = MySentences('/some/directory') # a memory-friendly iterator
+model = gensim.models.Word2Vec(sentences)
+'''
