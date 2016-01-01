@@ -42,6 +42,8 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r"/index", IndexHandler),
+            (r"/chart", ChartHandler),
+            (r"/user",UserHandler),
             (r"/test", TestHandler),
             (r"/testajax", AjaxHandler),
         ]
@@ -62,6 +64,43 @@ class IndexHandler(BaseHandler):
     def get(self):
         abc = ["Item 1", "Item 2", "Item 3"]
         self.render("index.html", abc = abc)
+
+class ChartHandler(BaseHandler):
+    def get(self):
+        self.render("chart.html")
+
+class UserHandler(BaseHandler):
+    def get(self):
+        self.render("user.html")
+
+    def post(self):
+        username = self.get_argument("username")
+        print username
+        self.render("user.html", username = username)
+        
+'''
+class IndexHandler(BaseHandler):
+    def get(self):
+        createMessage = ""
+        abc = ["Item 1", "Item 2", "Item 3"]
+        self.render("index.html", abc = abc, createMessage = createMessage)
+
+    def post(self):
+        newusername = self.get_argument("newusername")
+        newpassword = self.get_argument("newpassword")
+        print newusername, newpassword
+        newUser = collection.find_one({"username": newusername})
+        if newUser == None:
+            post = {
+            "username": newusername,
+            "password": newpassword
+            }
+            collection.insert_one(post)
+            createMessage = "new user"
+        else:
+            createMessage = "old user"
+        self.render("index.html", createMessage = createMessage)
+'''
 
 class TestHandler(BaseHandler):
     def get(self):

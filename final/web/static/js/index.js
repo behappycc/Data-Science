@@ -5,6 +5,7 @@ $(document).ready(function() {
         alert("hello fatty");
       });
 
+      /*
       $('#runajax').click(function (event) {
 
                 var valueForInput1 = $("#input1").val();
@@ -39,6 +40,7 @@ $(document).ready(function() {
 
                 event.preventDefault();
             });
+*/
 
   var density = {
     "臺北市": 9952.60,
